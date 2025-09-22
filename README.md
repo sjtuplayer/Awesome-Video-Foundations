@@ -7,42 +7,61 @@
 
 ## 📖 Overview
 
-The rapid advancement of Artificial Intelligence Generated Content (AIGC) has revolutionized video generation, enabling systems like OpenAI's Sora, Google's Veo3, and Pika Labs' tools to synthesize temporally coherent and semantically rich videos. These advancements pave the way for building "world models" that simulate real-world dynamics, with applications spanning entertainment, education, and virtual reality.
+The rapid advancement of **Artificial Intelligence Generated Content (AIGC)** has revolutionized video generation, enabling systems like **OpenAI's Sora**, **Google's Veo3**, and **Pika Labs' tools** to synthesize temporally coherent and semantically rich videos. These advancements pave the way for building **"world models"** 🌍 that simulate real-world dynamics, with applications spanning entertainment, education, and virtual reality.
 
-This survey provides a systematic review of the development of video generation technology, tracing its evolution from early GANs to dominant diffusion models, and further to emerging AR-based and multimodal techniques. We conduct an in-depth analysis of the foundational principles, key advancements, and comparative strengths/limitations of each methodology.
+This survey provides a **systematic review** of the development of video generation technology, tracing its evolution through **three major paradigms**:
+
+> 🎭 **GAN Era (2014-2020)** → 🌊 **Diffusion Dominance (2021-2025+)** → 🔄 **Autoregressive Future (2024-2025+)**
+
+We conduct an **in-depth analysis** of the foundational principles, key advancements, and comparative strengths/limitations of each methodology, with special attention to **🎬 multimodal video generation** that integrates text, audio, and visual modalities for comprehensive content creation.
 
 ### 🎯 Key Contributions
 
-- **Comprehensive Coverage**: Systematic review of three dominant paradigms - GAN-based, Diffusion-based, and Autoregressive (AR)-based methods
-- **Historical Perspective**: Traces the evolution from early GANs to current state-of-the-art models
-- **Multimodal Integration**: Explores emerging trends in multimodal video generation
-- **Future Insights**: Provides guidance for future research in video generation and world modeling
+**1️⃣ Comprehensive Coverage**: **Systematic review** of **three dominant paradigms** - 🎭 **GAN-based**, 🌊 **Diffusion-based**, and 🔄 **Autoregressive (AR)-based** methods
+   - 📊 **50+ GAN models** spanning spatio-temporal joint modeling to StyleGAN-based generation
+   - 🌊 **80+ Diffusion models** from UNet architectures to advanced Transformer-based approaches  
+   - 🔄 **50+ AR models** covering pixel-level to latent space autoregressive generation
+
+**2️⃣ Historical Perspective**: **Traces the complete evolution** from early GANs (2014) to current state-of-the-art models (2025)
+   - 📈 **Decade-spanning analysis** of technological breakthroughs and paradigm shifts
+   - 🔍 **Comparative assessment** of each era's strengths, limitations, and impact on the field
+
+**3️⃣ Future Insights**: **Provides strategic guidance** for future research in video generation and **🌍 world modeling**
+   - 🚀 **Emerging opportunities** in real-time generation and interactive content creation
+   - ⚖️ **Safety and ethics** considerations for responsible AI development
+   - 🔮 **Next-generation architectures** and scaling laws for video foundation models
 
 ---
 
 ## 🏗️ Architecture Overview
 
-```mermaid
-graph TD
-    A[Video Generation] --> B[GAN-based Models]
-    A --> C[Diffusion-based Models]
-    A --> D[Autoregressive Models]
-    
-    B --> B1[Spatio-Temporal Joint GANs]
-    B --> B2[Temporal GANs]
-    B --> B3[Progressive GANs]
-    B --> B4[StyleGAN-based]
-    
-    C --> C1[UNet with Temporal Modules]
-    C --> C2[Diffusion Transformers]
-    C --> C3[Efficient Diffusion Models]
-    
-    D --> D1[Pixel-level AR Models]
-    D --> D2[Latent Space AR Models]
-    D --> D3[Multimodal AR Models]
-```
+### 📅 **Leading Video Foundation Models Timeline (Dec 2024 - Present)**
+
+<div align="center">
+  <img src="assets/imgs/timeline.png" alt="Video Generation Timeline" width="100%">
+</div>
+
+> **🚀 Recent Breakthroughs**: This timeline showcases the rapid evolution of video foundation models from December 2024 to the present, highlighting key milestones in:
+> - 🎬 **Commercial Deployments**: Sora, Veo3, Runway Gen-3
+> - 🔬 **Research Advances**: CogVideoX, HunyuanVideo, Wan
+> - 📊 **Performance Leaps**: Resolution scaling, temporal consistency, generation speed
+> - 🌐 **Multimodal Integration**: Text-to-video, image-to-video, audio-visual synthesis
+
+### 📊 **Benchmark Evaluation Results for Leading Methods**
+
+<div align="center">
+  <img src="assets/imgs/benchmarks.png" alt="Video Generation Benchmarks" width="100%">
+</div>
+
+> **📈 Comprehensive Assessment**: This evaluation matrix compares state-of-the-art video generation models across three key dimensions:
+> - 🏗️ **Foundation**: Comprehensive video generation evaluation including visual quality, temporal consistency, text alignment, and generation efficiency
+> - ⚖️ **Physics**: Physics-constrained evaluation covering motion realism, object dynamics, physical plausibility, and natural scene interactions
+> - 🛡️ **Safety**: Generation safety evaluation including content appropriateness, bias detection, harmful content protection, and ethical compliance
+>
+> **Key Insights**: Diffusion models currently lead in quality, while autoregressive approaches show promise for scalability and controllability.
 
 ---
+
 
 ## 📚 Table of Contents
 
@@ -61,6 +80,7 @@ graph TD
   - [Multimodal AR Models](#multimodal-ar-models)
 - [Benchmarks & Evaluation](#-benchmarks--evaluation)
 - [Applications & Downstream Tasks](#-applications--downstream-tasks)
+- [Research Trends & Future Directions](#-research-trends--future-directions)
 
 ---
 
@@ -196,39 +216,84 @@ graph TD
 
 |     Model     | Paper                                                        |   Venue    |                           Website                            |                            GitHub                            |
 | :-----------: | :----------------------------------------------------------- | :--------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-|     `VPN`     | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>Video Pixel Networks | Coming Soon |                              -                               |                              -                               |
-|   `PMARD`     | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>Pixel-level Multimodal Autoregressive for Video Generation | Coming Soon |                              -                               |                              -                               |
-| `VideoTransformer` | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>Scaling Autoregressive Video Models | Coming Soon |                              -                               |                              -                               |
+| `VPN` | [![arXiv](https://img.shields.io/badge/arXiv-1610.00527-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/1610.00527)<br>Video Pixel Networks | ICML 2017 | - | - |
+| `PMARD` | [![arXiv](https://img.shields.io/badge/arXiv-1703.03664-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/1703.03664)<br>Parallel Multiscale Autoregressive Density Estimation | ICML 2017 | - | - |
+| `Video Transformer` | [![arXiv](https://img.shields.io/badge/arXiv-1906.02634-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/1906.02634)<br>Scaling Autoregressive Video Models | ICLR 2020 | - | - |
 
 ### Latent Space AR Models
 > Models that perform autoregressive generation in compressed latent representations for improved efficiency.
 
 |     Model     | Paper                                                        |   Venue    |                           Website                            |                            GitHub                            |
 | :-----------: | :----------------------------------------------------------- | :--------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-|     `LVT`     | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>Latent Video Transformer | Coming Soon |                              -                               |                              -                               |
-|    `TATS`     | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>Long Video Generation with Time-Agnostic VQGAN and Time-Sensitive Transformer | Coming Soon |                              -                               |                              -                               |
-|   `GODIVA`    | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>GODIVA: Generating Open-Domain Videos from Natural Descriptions | Coming Soon |                              -                               |                              -                               |
-|    `MOSO`     | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>MOSO: Decomposing MOtion, Scene and Object for Video Prediction | Coming Soon |                              -                               |                              -                               |
-|     `LVM`     | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>Large Vision Models for Video Generation | Coming Soon |                              -                               |                              -                               |
-|    `Loong`    | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>Loong: Generating Minute-level Long Videos with Autoregressive Language Models | Coming Soon |                              -                               |                              -                               |
-|    `ARCON`    | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>Advancing Autoregressive Continuation Video Generation | Coming Soon |                              -                               |                              -                               |
-|  `iVideoGPT`  | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>iVideoGPT: Interactive VideoGPTs are Scalable World Models | Coming Soon |                              -                               |                              -                               |
-|   `Phenaki`   | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>Phenaki: Variable Length Video Generation From Open Domain Textual Description | Coming Soon |                              -                               |                              -                               |
-|   `FACTOR`    | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>FACTOR: A Novel Framework for Autoregressive Video Generation | Coming Soon |                              -                               |                              -                               |
-|   `MaskViT`   | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>MaskViT: Masked Visual Pre-Training for Video Transformer | Coming Soon |                              -                               |                              -                               |
-|   `MAGVIT`    | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>MAGVIT: Masked Generative Video Transformer | Coming Soon |                              -                               |                              -                               |
-|    `NOVA`     | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>NOVA: Autoregressive Video Generation with Temporal Consistency | Coming Soon |                              -                               |                              -                               |
+| `VideoGPT` | [![arXiv](https://img.shields.io/badge/arXiv-2104.10157-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2104.10157)<br>VideoGPT: Video Generation using VQ-VAE and Transformers | arXiv 2021 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://wilson1yan.github.io/videogpt/index.html) | [![GitHub](https://img.shields.io/github/stars/wilson1yan/VideoGPT)](https://github.com/wilson1yan/VideoGPT) |
+| `TATS` | [![arXiv](https://img.shields.io/badge/arXiv-2204.03638-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2204.03638)<br>Long Video Generation with Time-Agnostic VQGAN and Time Sensitive Transformer | ECCV 2022 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://songweige.github.io/projects/tats) | [![GitHub](https://img.shields.io/github/stars/SongweiGe/TATS)](https://github.com/SongweiGe/TATS) |
+| `MAGVIT` | [![arXiv](https://img.shields.io/badge/arXiv-2212.05199-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2212.05199)<br>MAGVIT: Masked Generative Video Transformer | CVPR 2023 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://magvit.cs.cmu.edu/) | [![GitHub](https://img.shields.io/github/stars/google-research/magvit)](https://github.com/google-research/magvit) |
+| `MAGVIT-v2` | [![arXiv](https://img.shields.io/badge/arXiv-2310.05737-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2310.05737)<br>Language Model Beats Diffusion — Tokenizer Is Key to Visual Generation | ICLR 2024 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://magvit.cs.cmu.edu/v2/) | - |
+| `Open-MAGVIT2` | [![arXiv](https://img.shields.io/badge/arXiv-2409.04410-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2409.04410)<br>Open-MAGVIT2: An Open-Source Project Toward Democratizing Auto-regressive Visual Generation | arXiv 2024 | - | [![GitHub](https://img.shields.io/github/stars/TencentARC/SEED-Voken)](https://github.com/TencentARC/SEED-Voken) |
+| `VidTok` | [![arXiv](https://img.shields.io/badge/arXiv-2412.13061-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2412.13061)<br>VidTok: A Versatile and Open-Source Video Tokenizer | arXiv 2024 | - | [![GitHub](https://img.shields.io/github/stars/microsoft/VidTok)](https://github.com/microsoft/VidTok) |
+| `Omnitokenizer` | [![arXiv](https://img.shields.io/badge/arXiv-2406.09399-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2406.09399)<br>Omnitokenizer: A Joint Image-Video Tokenizer for Visual Generation | NeurIPS 2024 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://www.wangjunke.info/OmniTokenizer/) | [![GitHub](https://img.shields.io/github/stars/FoundationVision/OmniTokenizer)](https://github.com/FoundationVision/OmniTokenizer) |
+| `Cosmos` | [![arXiv](https://img.shields.io/badge/arXiv-2501.03575-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2501.03575)<br>Cosmos World Foundation Model Platform for Physical AI | arXiv 2025 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://research.nvidia.com/labs/dir/cosmos-tokenizer/) | [![GitHub](https://img.shields.io/github/stars/NVIDIA/Cosmos-Tokenizer)](https://github.com/NVIDIA/Cosmos-Tokenizer?tab=readme-ov-file) |
+| `LARP` | [![arXiv](https://img.shields.io/badge/arXiv-2410.21264-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2410.21264)<br>Larp: Tokenizing Videos with a Learned Autoregressive Generative Prior | ICLR 2025 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://hywang66.github.io/larp/) | [![GitHub](https://img.shields.io/github/stars/hywang66/LARP)](https://github.com/hywang66/LARP/) |
+| `LVT` | [![arXiv](https://img.shields.io/badge/arXiv-2006.xxxx-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>Latent Video Transformer | arXiv 2020 | - | - |
+| `GODIVA` | [![arXiv](https://img.shields.io/badge/arXiv-2104.xxxx-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>GODIVA: Generating Open-DomaIn Videos from nAtural Descriptions | arXiv 2021 | - | - |
+| `HARP` | [![arXiv](https://img.shields.io/badge/arXiv-2209.07143-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2209.07143)<br>Harp: Autoregressive Latent Video Prediction with High-Fidelity Image Generator | ICIP 2022 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://sites.google.com/view/harp-videos/home) | - |
+| `Nuwa-infinity` | [![arXiv](https://img.shields.io/badge/arXiv-2207.09814-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2207.09814)<br>Nuwa-infinity: Autoregressive over Autoregressive Generation for Infinite Visual Synthesis | NeurIPS 2022 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://nuwa-infinity.microsoft.com/#/NUWAInfinity) | - |
+| `CogVideo` | [![arXiv](https://img.shields.io/badge/arXiv-2205.15868-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2205.15868)<br>CogVideo: Large-Scale Pretraining for Text-to-Video Generation via Transformers | arXiv 2022 | - | [![GitHub](https://img.shields.io/github/stars/THUDM/CogVideo)](https://github.com/THUDM/CogVideo) |
+| `Transframer` | [![arXiv](https://img.shields.io/badge/arXiv-2203.09494-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2203.09494)<br>Transframer: Arbitrary Frame Prediction with Generative Models | TMLR 2023 | - | - |
+| `IRIS` | [![arXiv](https://img.shields.io/badge/arXiv-2209.00588-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2209.00588)<br>Transformers are Sample Efficient World Models | ICLR 2023 | - | [![GitHub](https://img.shields.io/github/stars/eloialonso/iris)](https://github.com/eloialonso/iris) |
+| `MOSO` | [![arXiv](https://img.shields.io/badge/arXiv-2303.03684-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2303.03684)<br>MOSO: Decomposing MOtion, Scene and Object for Video Prediction | CVPR 2023 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://iva-mzsun.github.io/MOSO) | [![GitHub](https://img.shields.io/github/stars/iva-mzsun/MOSO)](https://github.com/iva-mzsun/MOSO) |
+| `PAR` | [![arXiv](https://img.shields.io/badge/arXiv-2412.15119-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2412.15119)<br>Parallelized Autoregressive Visual Generation | arXiv 2024 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://epiphqny.github.io/PAR-project/) | [![GitHub](https://img.shields.io/github/stars/Epiphqny/PAR)](https://github.com/Epiphqny/PAR) |
+| `VideoPoet` | [![arXiv](https://img.shields.io/badge/arXiv-2312.14125-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2312.14125)<br>VideoPoet: A Large Language Model for Zero-Shot Video Generation | ICML 2024 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://sites.research.google/videopoet/) | - |
+| `iVideoGPT` | [![arXiv](https://img.shields.io/badge/arXiv-2405.15223-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2405.15223)<br>iVideoGPT: Interactive VideoGPTs are Scalable World Models | NeurIPS 2024 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://thuml.github.io/iVideoGPT/) | [![GitHub](https://img.shields.io/github/stars/thuml/iVideoGPT)](https://github.com/thuml/iVideoGPT) |
+| `LVM` | [![arXiv](https://img.shields.io/badge/arXiv-2312.00785-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2312.00785)<br>Sequential Modeling Enables Scalable Learning for Large Vision Models | CVPR 2024 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://yutongbai.com/lvm.html) | [![GitHub](https://img.shields.io/github/stars/ytongbai/LVM)](https://github.com/ytongbai/LVM) |
+| `Loong` | [![arXiv](https://img.shields.io/badge/arXiv-2410.02757-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2410.02757)<br>Loong: Generating Minute-level Long Videos with Autoregressive Language Models | arXiv 2024 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://epiphqny.github.io/Loong-video/) | - |
+| `ARCON` | [![arXiv](https://img.shields.io/badge/arXiv-2412.03758v1-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2412.03758v1)<br>Advancing Auto-Regressive Continuation for Video Frames | arXiv 2024 | - | - |
+| `Phenaki` | [![arXiv](https://img.shields.io/badge/arXiv-2210.02399-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2210.02399)<br>Phenaki: Variable Length Video Generation From Open Domain Textual Description | ICLR 2023  | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://phenaki.video/) | - |
+| `MaskViT` | [![arXiv](https://img.shields.io/badge/arXiv-2206.11894-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2206.11894)<br>Masked visual pre-training for video prediction | arXiv 2022 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://maskedvit.github.io/) | - |
+| `WorldDreamer` | [![arXiv](https://img.shields.io/badge/arXiv-2401.09985-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2401.09985)<br>WorldDreamer: Towards General World Models for Video Generation via Predicting Masked Tokens | arXiv 2024 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://world-dreamer.github.io/) | [![GitHub](https://img.shields.io/github/stars/PJLab-ADG/DriveArena)](https://github.com/PJLab-ADG/DriveArena) |
+| `FACTOR` | [![arXiv](https://img.shields.io/badge/arXiv-2312.02919-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2312.02919)<br>Fine-grained controllable video generation via object appearance and context | WACV 2025 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://hhsinping.github.io/factor/) | - |
+| `NOVA` | [![arXiv](https://img.shields.io/badge/arXiv-2412.14169-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2412.14169)<br>AUTOREGRESSIVE VIDEO GENERATION WITHOUT VECTOR QUANTIZATION | ICLR 2025 | - | [![GitHub](https://img.shields.io/github/stars/baaivision/NOVA)](https://github.com/baaivision/NOVA) |
 
 ### Multimodal AR Models
 > Models that integrate multiple modalities (text, audio, video) within unified autoregressive frameworks.
 
 |     Model     | Paper                                                        |   Venue    |                           Website                            |                            GitHub                            |
 | :-----------: | :----------------------------------------------------------- | :--------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-|     `Nüwa`    | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>Nüwa: Visual Synthesis Pre-training for Neural visUal World creAtion | Coming Soon |                              -                               |                              -                               |
-|    `MMVG`     | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>Multimodal Video Generation with Temporal-Aware VQGAN | Coming Soon |                              -                               |                              -                               |
-| `VideoPoet`   | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>VideoPoet: A Large Language Model for Zero-Shot Video Generation | Coming Soon |                              -                               |                              -                               |
-|     `LWM`     | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>Large World Model: A Universal Framework for Multimodal Generation | Coming Soon |                              -                               |                              -                               |
-|   `CoDi-2`    | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>CoDi-2: In-Context, Interleaved, and Interactive Any-to-Any Generation | Coming Soon |                              -                               |                              -                               |
+| `UniVL` | [![arXiv](https://img.shields.io/badge/arXiv-2002.06353-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2002.06353)<br>UniVL: A Unified Video and Language Pre-Training Model for Multimodal Understanding and Generation | arXiv | - | [![GitHub](https://img.shields.io/github/stars/microsoft/UniVL)](https://github.com/microsoft/UniVL) |
+| `Nüwa` | [![arXiv](https://img.shields.io/badge/arXiv-2111.12417-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2111.12417)<br>Nüwa: Visual synthesis pre-training for neural visual world creation | ECCV 2022  | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://nuwa-infinity.microsoft.com/#/) | - |
+| `MMVID` | [![arXiv](https://img.shields.io/badge/arXiv-2203.02573-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2203.02573)<br>Show Me What and Tell Me How: Video Synthesis via Multimodal Conditioning | CVPR 2022 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://snap-research.github.io/MMVID/) | [![GitHub](https://img.shields.io/github/stars/snap-research/MMVID)](https://github.com/snap-research/MMVID) |
+| `MMVG` | [![arXiv](https://img.shields.io/badge/arXiv-2211.12824-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2211.12824)<br>Tell Me What Happened: Unifying Text-guided Video Completion via Multimodal Masked Video Generation | CVPR 2023 | - | - |
+| `EMU` | [![arXiv](https://img.shields.io/badge/arXiv-2307.05222-b31b1b?style=flat-square&logo=arxiv)](http://arxiv.org/abs/2307.05222)<br>EMU: GENERATIVE PRETRAINING IN MULTIMODALITY | ICLR 2024 | - | [![GitHub](https://img.shields.io/github/stars/baaivision/Emu)](https://github.com/baaivision/Emu) |
+| `JAM` | [![arXiv](https://img.shields.io/badge/arXiv-2309.15564-b31b1b?style=flat-square&logo=arxiv)](http://arxiv.org/abs/2309.15564)<br>JOINTLY TRAINING LARGE AUTOREGRESSIVE MULTIMODAL MODELS | ICLR 2024 | - | [![GitHub](https://img.shields.io/github/stars/kyegomez/MultiModalCrossAttn)](https://github.com/kyegomez/MultiModalCrossAttn) |
+| `NExT-GPT` | [![arXiv](https://img.shields.io/badge/arXiv-2309.05519-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2309.05519)<br>NExT-GPT: Any-to-Any Multimodal LLM | ICML 2024 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://next-gpt.github.io/) | [![GitHub](https://img.shields.io/github/stars/NExT-GPT/NExT-GPT)](https://github.com/NExT-GPT/NExT-GPT) |
+| `GPT4Video` | [![arXiv](https://img.shields.io/badge/arXiv-2311.16511-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2311.16511)<br>GPT4Video: A Unified Multimodal Large Language Model for Instruction-Followed Understanding and Safety-Aware Generation | MM 2024 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://gpt4video.github.io/) | [![GitHub](https://img.shields.io/github/stars/gpt4video/GPT4Video)](https://github.com/gpt4video/GPT4Video) |
+| `CoDi-2` | [![arXiv](https://img.shields.io/badge/arXiv-2311.18775-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2311.18775)<br>CoDi-2: In-Context, Interleaved, and Interactive Any-to-Any Generation | arXiv 2023 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://codi-2.github.io/) | [![GitHub](https://img.shields.io/github/stars/microsoft/i-Code)](https://github.com/microsoft/i‑Code/tree/main/CoDi‑2) |
+| `Emu2` | [![arXiv](https://img.shields.io/badge/arXiv-2312.13286-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2312.13286)<br>Generative Multimodal Models are In-Context Learners | CVPR 2024 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://baaivision.github.io/emu2/) | [![GitHub](https://img.shields.io/github/stars/baaivision/Emu)](https://github.com/baaivision/Emu) |
+| `Moonshot` | [![arXiv](https://img.shields.io/badge/arXiv-2401.01827-b31b1b?style=flat-square&logo=arxiv)](http://arxiv.org/abs/2401.01827)<br>Moonshot: Towards Controllable Video Generation and Editing with Multimodal Conditions | IJCV 2025 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://showlab.github.io/Moonshot/) | - |
+| `Video‑LaVIT` | [![arXiv](https://img.shields.io/badge/arXiv-2402.03161-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2402.03161)<br>Video‑LaVIT: Unified Video‑Language Pre‑training with Decoupled Visual‑Motional Tokenization | ICML 2024 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://video-lavit.github.io/) | [![GitHub](https://img.shields.io/github/stars/jy0205/LaVIT)](https://github.com/jy0205/LaVIT) |
+| `LWM` | [![arXiv](https://img.shields.io/badge/arXiv-2402.08268-b31b1b?style=flat-square&logo=arxiv)](http://arxiv.org/abs/2402.08268)<br>World Model on Million‑Length Video and Language with Blockwise RingAttention | ICLR 2025  | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://largeworldmodel.github.io/lwm/) | [![GitHub](https://img.shields.io/github/stars/LargeWorldModel/LWM)](https://github.com/LargeWorldModel/LWM) |
+| `X-VILA` | [![arXiv](https://img.shields.io/badge/arXiv-2405.19335-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/pdf/2405.19335)<br>X-VILA: Cross-Modality Alignment for Large Language Model | arXiv 2024 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://video-lavit.github.io/) | [![GitHub](https://img.shields.io/github/stars/jy0205/LaVIT)](https://github.com/jy0205/LaVIT) |
+| `SHOW‑O` | [![arXiv](https://img.shields.io/badge/arXiv-2408.12528-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2408.12528)<br>SHOW‑O: ONE SINGLE TRANSFORMER TO UNIFY MULTIMODAL UNDERSTANDING AND GENERATION | ICLR 2025 | - | [![GitHub](https://img.shields.io/github/stars/showlab/Show-o)](https://github.com/showlab/Show-o) |
+| `VILA‑U` | [![arXiv](https://img.shields.io/badge/arXiv-2409.04429-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2409.04429)<br>VILA‑U: A Unified Foundation Model Integrating Visual Understanding and Generation | ICLR 2025 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://hanlab.mit.edu/projects/vila-u) | [![GitHub](https://img.shields.io/github/stars/mit-han-lab/vila-u)](https://github.com/mit-han-lab/vila-u) |
+| `MIO` | [![arXiv](https://img.shields.io/badge/arXiv-2409.17692-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2409.17692)<br>MIO: A Foundation Model on Multimodal Tokens | arXiv 2024 | - | [![GitHub](https://img.shields.io/github/stars/MIO-Team/MIO)](https://github.com/MIO-Team/MIO) |
+| `Emu3` | [![arXiv](https://img.shields.io/badge/arXiv-2409.18869-b31b1b?style=flat-square&logo=arxiv)](http://arxiv.org/abs/2409.18869)<br>Emu3: Next-Token Prediction is All You Need | arXiv 2024 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://emu.baai.ac.cn/about) | [![GitHub](https://img.shields.io/github/stars/baaivision/Emu3)](https://github.com/baaivision/Emu3) |
+| `Janus` | [![arXiv](https://img.shields.io/badge/arXiv-2410.13848-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2410.13848)<br>Janus: Decoupling Visual Encoding for Unified Multimodal Understanding and Generation | CVPR 2025 | - | [![GitHub](https://img.shields.io/github/stars/deepseek-ai/Janus)](https://github.com/deepseek-ai/Janus) |
+| `Janusflow` | [![arXiv](https://img.shields.io/badge/arXiv-2411.07975-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2411.07975)<br>Janusflow: Harmonizing autoregression and rectified flow for unified multimodal understanding and generation | CVPR 2025 | - | [![GitHub](https://img.shields.io/github/stars/deepseek-ai/Janus)](https://github.com/deepseek-ai/Janus) |
+| `Tokenflow` | [![arXiv](https://img.shields.io/badge/arXiv-2412.03069-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2412.03069)<br>Tokenflow: Unified image tokenizer for multimodal understanding and generation | CVPR 2025 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://bytevisionlab.github.io/TokenFlow/) | [![GitHub](https://img.shields.io/github/stars/ByteVisionLab/TokenFlow)](https://github.com/ByteVisionLab/TokenFlow) |
+| `GEM` | [![arXiv](https://img.shields.io/badge/arXiv-2412.11198-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2412.11198)<br>A Generalizable Ego-Vision Multimodal World Model for Fine-Grained Ego-Motion, Object Dynamics, and Scene Composition Control | CVPR 2025 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://vita-epfl.github.io/GEM.github.io/) | [![GitHub](https://img.shields.io/github/stars/vita-epfl/GEM)](https://github.com/vita-epfl/GEM) |
+| `MetaMorph` | [![arXiv](https://img.shields.io/badge/arXiv-2412.14164-b31b1b?style=flat-square&logo=arxiv)](http://arxiv.org/abs/2412.14164)<br>MetaMorph: Multimodal Understanding and Generation via Instruction Tuning | arXiv | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://tsb0601.github.io/metamorph/) | [![GitHub](https://img.shields.io/github/stars/facebookresearch/metamorph)](https://github.com/facebookresearch/metamorph/) |
+| `Unitok` | [![arXiv](https://img.shields.io/badge/arXiv-2502.20321-b31b1b?style=flat-square&logo=arxiv)](http://arxiv.org/abs/2502.20321)<br>Unitok: A unified tokenizer for visual generation and understanding | arXiv | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://foundationvision.github.io/UniTok/) | [![GitHub](https://img.shields.io/github/stars/FoundationVision/UniTok)](https://github.com/FoundationVision/UniTok) |
+| `WISE` | [![arXiv](https://img.shields.io/badge/arXiv-2503.07265-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2503.07265)<br>WISE: A World Knowledge-Informed Semantic Evaluation for Text-to-Image Generation | arXiv | - | [![GitHub](https://img.shields.io/github/stars/PKU-YuanGroup/WISE)](https://github.com/PKU-YuanGroup/WISE) |
+| `MetaQueries` | [![arXiv](https://img.shields.io/badge/arXiv-2504.06256-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2504.06256)<br>Transfer between Modalities with MetaQueries | arXiv | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://xichenpan.com/metaquery/) | [![GitHub](https://img.shields.io/github/stars/facebookresearch/metaquery)](https://github.com/facebookresearch/metaquery) |
+| `Unitoken` | [![arXiv](https://img.shields.io/badge/arXiv-2504.04423-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2504.04423)<br>Unitoken: Harmonizing multimodal understanding and generation through unified visual encoding | CVPRW 2025 | - | [![GitHub](https://img.shields.io/github/stars/SxJyJay/UniToken)](https://github.com/SxJyJay/UniToken) |
+| `BAGEL` | [![arXiv](https://img.shields.io/badge/arXiv-2505.14683-b31b1b?style=flat-square&logo=arxiv)](http://arxiv.org/abs/2505.14683)<br>Emerging Properties in Unified Multimodal Pretraining | arXiv| - |-|
+| `Mogao` | [![arXiv](https://img.shields.io/badge/arXiv-2505.05472-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2505.05472)<br>Mogao: An Omni Foundation Model for Interleaved Multi-Modal Generation | arXiv | - | - |
+| `BLIP3-o` | [![arXiv](https://img.shields.io/badge/arXiv-2505.09568-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2505.09568)<br>BLIP3-o: A Family of Fully Open Unified Multimodal Models-Architecture, Training and Dataset | arXiv | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://jiuhaichen.github.io/BLIP3o-NEXT.github.io/) | [![GitHub](https://img.shields.io/github/stars/JiuhaiChen/BLIP3o)](https://github.com/JiuhaiChen/BLIP3o) |
+| `Muddit` | [![arXiv](https://img.shields.io/badge/arXiv-2505.23606-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2505.23606)<br>Muddit: Liberating Generation Beyond Text-to-Image with a Unified Discrete Diffusion Model | arXiv | - | [![GitHub](https://img.shields.io/github/stars/M-E-AGI-Lab/Muddit)](https://github.com/M-E-AGI-Lab/Muddit) |
+| `UniWorld` | [![arXiv](https://img.shields.io/badge/arXiv-2506.03147-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2506.03147)<br>UniWorld: High-Resolution Semantic Encoders for Unified Visual Understanding and Generation | arXiv | - | [![GitHub](https://img.shields.io/github/stars/PKU-YuanGroup/UniWorld-V1)](https://github.com/PKU-YuanGroup/UniWorld-V1) |
+| `Show-o2` | [![arXiv](https://img.shields.io/badge/arXiv-2506.15564-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2506.15564)<br>Show-o2: Improved Native Unified Multimodal Models | NeurIPS 2025 | - | [![GitHub](https://img.shields.io/github/stars/showlab/Show-o)](https://github.com/showlab/Show-o) |
+| `Qwen-Image` | [![arXiv](https://img.shields.io/badge/arXiv-2508.02324-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2508.02324)<br>Qwen-Image Technical Report | arXiv | - | [![GitHub](https://img.shields.io/github/stars/QwenLM/Qwen-Image)](https://github.com/QwenLM/Qwen-Image) |
+| `RecA` | [![arXiv](https://img.shields.io/badge/arXiv-2509.07295-b31b1b?style=flat-square&logo=arxiv)](https://www.arxiv.org/abs/2509.07295)<br>Reconstruction Alignment Improves Unified Multimodal Models | arXiv | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://reconstruction-alignment.github.io/) | [![GitHub](https://img.shields.io/github/stars/HorizonWind2004/reconstruction-alignment)](https://github.com/HorizonWind2004/reconstruction-alignment) |
 
 ---
 
@@ -317,28 +382,29 @@ timeline
 
 ---
 
+
 ## 🔬 Research Trends & Future Directions
 
-### Current Challenges
-- **Temporal Consistency**: Maintaining coherent motion and object persistence across frames
-- **Computational Efficiency**: Reducing inference time and memory requirements
-- **Controllability**: Fine-grained control over generation process and content
-- **Long-form Generation**: Scaling to minute-length or longer videos
-- **Multimodal Integration**: Seamless fusion of text, audio, and visual modalities
+### 🚧 Current Challenges
+- **⏱️ Temporal Consistency**: Maintaining coherent motion and object persistence across frames
+- **⚡ Computational Efficiency**: Reducing inference time and memory requirements
+- **🎛️ Controllability**: Fine-grained control over generation process and content
+- **📹 Long-form Generation**: Scaling to minute-length or longer videos
+- **🔗 Multimodal Integration**: Seamless fusion of text, audio, and visual modalities
 
-### Emerging Trends
-- **World Models**: Building comprehensive environmental representations
-- **Autoregressive Scaling**: Leveraging LLM-style scaling laws for video
-- **Real-time Generation**: Achieving interactive generation speeds
-- **Personalization**: User-specific content generation and style adaptation
-- **Safety & Ethics**: Ensuring responsible AI development and deployment
+### 📈 Emerging Trends
+- **🌍 World Models**: Building comprehensive environmental representations
+- **🔄 Autoregressive Scaling**: Leveraging LLM-style scaling laws for video
+- **⚡ Real-time Generation**: Achieving interactive generation speeds
+- **👤 Personalization**: User-specific content generation and style adaptation
+- **🛡️ Safety & Ethics**: Ensuring responsible AI development and deployment
 
-### Future Opportunities
-- **Interactive Video Generation**: Real-time user interaction and modification
-- **Cross-modal Understanding**: Deep integration of vision, language, and audio
-- **Causal Reasoning**: Understanding and modeling cause-effect relationships
-- **Physical Simulation**: Accurate physics-based video generation
-- **Collaborative Creation**: Human-AI collaborative content creation workflows
+### 🔮 Future Opportunities
+- **🎮 Interactive Video Generation**: Real-time user interaction and modification
+- **🧠 Cross-modal Understanding**: Deep integration of vision, language, and audio
+- **🔗 Causal Reasoning**: Understanding and modeling cause-effect relationships
+- **⚖️ Physical Simulation**: Accurate physics-based video generation
+- **🤝 Collaborative Creation**: Human-AI collaborative content creation workflows
 
 ---
 
@@ -375,12 +441,9 @@ If you find this survey useful for your research, please consider citing:
 
 ---
 
-## 🔗 Resources & Links
 
-### Official Resources
-- **Paper**: [arXiv (Coming Soon)](https://arxiv.org/)
-- **Project Page**: [GitHub Repository](https://github.com/worldbench/survey)
-- **Survey Website**: [Video Generation Survey](https://github.com/worldbench/survey)
+
+## 🔗 Resources & Links
 
 ### Related Surveys & Resources
 - [Awesome Diffusion Models](https://github.com/heejkoo/Awesome-Diffusion-Models)
