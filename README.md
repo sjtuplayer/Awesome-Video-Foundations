@@ -3,7 +3,7 @@
 [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)
 [![Website](https://img.shields.io/badge/Project-Page-green?style=flat-square&logo=gitbook)](https://github.com/sjtuplayer/Awesome-Video-Foundations)
 
-Teng Hu, Jiangning Zhang, Hongrui Huang, Ran Yi, Zihan Su, Jieyu Weng, Zhucun Xue, Lizhuang Ma, Ming-Hsuan Yang, Dacheng Tao
+[Teng Hu](#), [Jiangning Zhang](https://zhangzjn.github.io/), [Hongrui Huang](https://scholar.google.com/citations?user=x16uxsQAAAAJ&hl=en), [Ran Yi](https://yiranran.github.io/), [Zihan Su](https://github.com/Sugewud), [Jieyu Weng](#), [Zhucun Xue](#), [Lizhuang Ma](https://www.cs.sjtu.edu.cn/en/jiaoshiml/malizhuang.html), [Ming-Hsuan Yang](https://scholar.google.com/citations?user=p9-ohHsAAAAJ&hl=en), [Dacheng Tao](https://scholar.google.com/citations?user=RwlJNLcAAAAJ&hl=en)
 
 ---
 
