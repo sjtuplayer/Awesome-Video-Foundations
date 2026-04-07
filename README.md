@@ -1,19 +1,23 @@
-# Video Generation Foundation Model: A Survey
+# Evolution of Video Generative Foundations
 
 [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)
-[![Website](https://img.shields.io/badge/Project-Page-green?style=flat-square&logo=gitbook)](https://github.com/worldbench/survey)
+[![Website](https://img.shields.io/badge/Project-Page-green?style=flat-square&logo=gitbook)](https://github.com/sjtuplayer/Awesome-Video-Foundations)
+
+Teng Hu, Jiangning Zhang, Hongrui Huang, Ran Yi, Zihan Su, Jieyu Weng, Zhucun Xue, Lizhuang Ma, Ming-Hsuan Yang, Dacheng Tao
 
 ---
 
 ## 📖 Overview
 
-The rapid advancement of **Artificial Intelligence Generated Content (AIGC)** has revolutionized video generation, enabling systems like **OpenAI's Sora**, **Google's Veo3**, and **Pika Labs' tools** to synthesize temporally coherent and semantically rich videos. These advancements pave the way for building **"world models"** 🌍 that simulate real-world dynamics, with applications spanning entertainment, education, and virtual reality.
+The rapid advancement of **Artificial Intelligence Generated Content (AIGC)** has revolutionized video generation, enabling systems — ranging from proprietary pioneers like **OpenAI's Sora**, **Google's Veo3**, and **ByteDance's Seedance** to powerful open-source contenders like **Wan** and **HunyuanVideo** — to synthesize temporally coherent and semantically rich videos. These advancements pave the way for building **"world models"** 🌍 that simulate real-world dynamics, with applications spanning entertainment, education, and virtual reality.
 
-This survey provides a **systematic review** of the development of video generation technology, tracing its evolution through **three major paradigms**:
+However, existing reviews on video generation often focus on narrow technical fields, e.g., GANs and diffusion models, or specific tasks (e.g., video editing), lacking a comprehensive perspective on the field's evolution, especially regarding **Auto-Regressive (AR) models** and integration of **multimodal information**.
+
+To address these gaps, this survey provides a **systematic review** of the development of video generation technology, tracing its evolution through **three major paradigms**:
 
 > 🎭 **GAN Era (2014-2020)** → 🌊 **Diffusion Dominance (2021-2025+)** → 🔄 **Autoregressive Future (2024-2025+)**
 
-We conduct an **in-depth analysis** of the foundational principles, key advancements, and comparative strengths/limitations of each methodology, with special attention to **🎬 multimodal video generation** that integrates text, audio, and visual modalities for comprehensive content creation.
+We conduct an **in-depth analysis** of the foundational principles, key advancements, and comparative strengths/limitations of each methodology. We then explore emerging trends in **multimodal video generation**, emphasizing the integration of diverse data types to enhance contextual awareness. Finally, by bridging historical developments and contemporary innovations, this survey offers insights to guide future research in video generation and its applications — including virtual/augmented reality, personalized education, autonomous driving simulations, digital entertainment, and advanced world models.
 
 ### 🎯 Key Contributions
 
@@ -35,7 +39,18 @@ We conduct an **in-depth analysis** of the foundational principles, key advancem
 
 ## 🏗️ Architecture Overview
 
-### 📅 **Leading Video Foundation Models Timeline (Dec 2024 - Present)**
+### 🗂️ **A Comprehensive Taxonomy of Video Generation Methodologies**
+
+<div align="center">
+  <img src="assets/imgs/framework.png" alt="Video Generation Framework" width="100%">
+</div>
+
+> **📐 Taxonomy Overview**: This framework categorizes existing works based on three dominant generative paradigms — 🎭 **GANs**, 🌊 **Diffusion Models**, and 🔄 **Auto-Regressive Models** — and further structures them according to specific architectural designs and functional objectives. Key branches include:
+> - 🎭 **GAN Models**: Spatio-Temporal Joint GANs → Temporal GANs (motion/content decoupling, optical flow) → Progressive GANs (StyleGAN-based)
+> - 🌊 **Diffusion Models**: UNet with Temporal Modules → Diffusion Transformers (DiT) → Efficient Diffusion Models (training-free, decomposed, linear attention)
+> - 🔄 **Auto-Regressive Models**: Pixel-Level → Latent-Level (video tokenizers, spatial/temporal modeling, masked AR) → Unified Multimodal AR Models
+
+### 📅 **Leading Video Foundation Models Timeline (2024 - Present)**
 
 <div align="center">
   <img src="assets/imgs/timeline.png" alt="Video Generation Timeline" width="100%">
@@ -50,7 +65,7 @@ We conduct an **in-depth analysis** of the foundational principles, key advancem
 ### 📊 **Benchmark Evaluation Results for Leading Methods**
 
 <div align="center">
-  <img src="assets/imgs/benchmarks.png" alt="Video Generation Benchmarks" width="100%">
+  <img src="assets/imgs/benchmark.png" alt="Video Generation Benchmarks" width="100%">
 </div>
 
 > **📈 Comprehensive Assessment**: This evaluation matrix compares state-of-the-art video generation models across three key dimensions:
@@ -68,6 +83,8 @@ We conduct an **in-depth analysis** of the foundational principles, key advancem
 - [GAN-based Models](#-gan-based-models)
   - [Spatio-Temporal Joint GANs](#spatio-temporal-joint-gans)
   - [Temporal GANs](#temporal-gans)
+    - [Motion and Content Decoupling](#motion-and-content-decoupling)
+    - [Optical Flow-based Generation](#optical-flow-based-generation)
   - [Progressive GANs](#progressive-gans)
   - [StyleGAN-based Generation](#stylegan-based-generation)
 - [Diffusion-based Models](#-diffusion-based-models)
@@ -79,6 +96,11 @@ We conduct an **in-depth analysis** of the foundational principles, key advancem
   - [Latent Space AR Models](#latent-space-ar-models)
   - [Multimodal AR Models](#multimodal-ar-models)
 - [Benchmarks & Evaluation](#-benchmarks--evaluation)
+  - [Foundational Quality: Fidelity and Prompt Alignment](#foundational-quality-fidelity-and-prompt-alignment)
+  - [Real-World Consistency: Physics, Commonsense, and Logic](#real-world-consistency-physics-commonsense-and-logic)
+  - [Safety and Responsible AI](#safety-and-responsible-ai)
+  - [Specific Capabilities: Motion, Temporality, and Narrative](#specific-capabilities-motion-temporality-and-narrative)
+  - [Methodological Innovations for Scalable Evaluation](#methodological-innovations-for-scalable-evaluation)
 - [Applications & Downstream Tasks](#-applications--downstream-tasks)
 - [Research Trends & Future Directions](#-research-trends--future-directions)
 
@@ -93,38 +115,58 @@ We conduct an **in-depth analysis** of the foundational principles, key advancem
 
 |     Model     | Paper                                                        |   Venue    |                           Website                            |                            GitHub                            |
 | :-----------: | :----------------------------------------------------------- | :--------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-|   `3D-Conv`   | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>Learning Spatiotemporal Features with 3D Convolutional Networks | Coming Soon |                              -                               |                              -                               |
-|     `VGAN`    | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>Generating Videos with Scene Dynamics | Coming Soon |                              -                               |                              -                               |
-|   `DVD-GAN`   | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>Adversarial Video Generation on Complex Datasets | Coming Soon |                              -                               |                              -                               |
+|     `GAN`     | [![arXiv](https://img.shields.io/badge/arXiv-1406.2661-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/1406.2661)<br>Generative Adversarial Nets | NIPS 2014 |                              -                               | [![GitHub](https://img.shields.io/github/stars/eriklindernoren/PyTorch-GAN)](https://github.com/eriklindernoren/PyTorch-GAN) |
+|   `3D-Conv`   | [![arXiv](https://img.shields.io/badge/arXiv-1412.0767-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/1412.0767)<br>Learning Spatiotemporal Features with 3D Convolutional Networks | ICCV 2015 |                              -                               | [![GitHub](https://img.shields.io/github/stars/facebookarchive/C3D)](https://github.com/facebookarchive/C3D) |
+|     `VGAN`    | [![arXiv](https://img.shields.io/badge/arXiv-1609.02612-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/1609.02612)<br>Generating Videos with Scene Dynamics | NIPS 2016 |                              -                               | [![GitHub](https://img.shields.io/github/stars/GV1028/videogan)](https://github.com/GV1028/videogan) |
+|   `DVD-GAN`   | [![arXiv](https://img.shields.io/badge/arXiv-1907.06571-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/1907.06571)<br>Adversarial Video Generation on Complex Datasets | arXiv 2019 |                              -                               | [![GitHub](https://img.shields.io/github/stars/DataScienceNigeria/Efficient-Video-Generation-on-Complex-Datasets)](https://github.com/DataScienceNigeria/Efficient-Video-Generation-on-Complex-Datasets) |
+|    `D-GAN`    | [![arXiv](https://img.shields.io/badge/arXiv-1907.08556-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/1907.08556)<br>Deep Generative Adversarial Nets for Spatio-Temporal Prediction | arXiv 2019 |                              -                               | [![GitHub](https://img.shields.io/github/stars/stefan-jansen/synthetic-data-for-finance)](https://github.com/stefan-jansen/synthetic-data-for-finance) |
+|      `-`      | [![Paper](https://img.shields.io/badge/IEEE-Link-blue?style=flat-square)](https://ieeexplore.ieee.org/abstract/document/9360626)<br>Spatiotemporal Generative Adversarial Network-Based Dynamic Texture Synthesis for Surveillance Video Coding | TMM 2021 |                              -                               |                              -                               |
 
 ### Temporal GANs
 > Models that decompose video generation into motion and content components for more efficient training.
 
+#### Motion and Content Decoupling
+> Models that separate motion and content information in videos for more efficient generation and manipulation.
+
 |     Model     | Paper                                                        |   Venue    |                           Website                            |                            GitHub                            |
 | :-----------: | :----------------------------------------------------------- | :--------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-|    `MCnet`    | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>Decomposing Motion and Content for Natural Video Sequence Prediction | Coming Soon |                              -                               |                              -                               |
-|   `MoCoGAN`   | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>MoCoGAN: Decomposing Motion and Content for Video Generation | Coming Soon |                              -                               |                              -                               |
-| `MoCoGAN-HD`  | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>MoCoGAN-HD: A Good Image Generator Is What You Need for High-Resolution Video Synthesis | Coming Soon |                              -                               |                              -                               |
-|   `TS-GAN`    | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>Temporal Shift GAN for Large Scale Video Generation | Coming Soon |                              -                               |                              -                               |
+|    `TGAN`     | [![arXiv](https://img.shields.io/badge/arXiv-1611.06624-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/1611.06624)<br>Temporal Generative Adversarial Nets With Singular Value Clipping | ICCV 2017 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://pfnet-research.github.io/tgan/) | [![GitHub](https://img.shields.io/github/stars/pfnet-research/tgan)](https://github.com/pfnet-research/tgan) |
+|   `TGANs-C`  | [![arXiv](https://img.shields.io/badge/arXiv-1709.07421-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/1709.07421)<br>To Create What You Tell: Generating Videos from Captions | MM 2017 |                              -                               | [![GitHub](https://img.shields.io/github/stars/yuxiaofelicia/generativevideorepo)](https://github.com/yuxiaofelicia/generativevideorepo) |
+|    `MCnet`    | [![arXiv](https://img.shields.io/badge/arXiv-1706.08033-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/1706.08033)<br>Decomposing Motion and Content for Natural Video Sequence Prediction | ICLR 2017 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://sites.google.com/a/umich.edu/rubenevillegas/iclr2017) | [![GitHub](https://img.shields.io/github/stars/rubenvillegas/iclr2017mcnet)](https://github.com/rubenvillegas/iclr2017mcnet) |
+|   `MoCoGAN`   | [![arXiv](https://img.shields.io/badge/arXiv-1707.04993-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/1707.04993)<br>MoCoGAN: Decomposing Motion and Content for Video Generation | CVPR 2018 |                              -                               | [![GitHub](https://img.shields.io/github/stars/sergeytulyakov/mocogan)](https://github.com/sergeytulyakov/mocogan) |
+|    `SAVP`     | [![arXiv](https://img.shields.io/badge/arXiv-1804.01523-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/1804.01523)<br>Stochastic Adversarial Video Prediction | ICLR 2018 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://alexlee-gk.github.io/video_prediction/) | [![GitHub](https://img.shields.io/github/stars/alexlee-gk/video_prediction)](https://github.com/alexlee-gk/video_prediction) |
+|   `TS-GAN`    | [![arXiv](https://img.shields.io/badge/arXiv-2004.01823-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2004.01823)<br>Time-series Generative Adversarial Networks | NIPS 2020 |                              -                               | [![GitHub](https://img.shields.io/github/stars/jsyoon0823/TimeGAN)](https://github.com/jsyoon0823/TimeGAN) |
+|   `TGANv2`   | [![arXiv](https://img.shields.io/badge/arXiv-1911.12453-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/1911.12453)<br>Train Sparsely, Generate Densely: Memory-Efficient Unsupervised Training of High-Resolution Temporal GAN | IJCV 2020 |                              -                               | [![GitHub](https://img.shields.io/github/stars/pfnet-research/tgan2)](https://github.com/pfnet-research/tgan2) |
+
+#### Optical Flow-based Generation
+> Models that analyze motion between consecutive video frames by estimating pixel flow for video generation or prediction.
+
+|     Model     | Paper                                                        |   Venue    |                           Website                            |                            GitHub                            |
+| :-----------: | :----------------------------------------------------------- | :--------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| `Dual Motion GAN` | [![arXiv](https://img.shields.io/badge/arXiv-1708.00284-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/1708.00284)<br>Dual Motion GAN for Future-Flow Embedded Video Prediction | ICCV 2017 |                              -                               | [![GitHub](https://img.shields.io/github/stars/SaulZhang/Awesome_Video_Frame_Prediction)](https://github.com/SaulZhang/Awesome_Video_Frame_Prediction) |
+|    `FTGAN`    | [![arXiv](https://img.shields.io/badge/arXiv-2003.02410-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2003.02410)<br>Hierarchical Video Generation From Orthogonal Information: Optical Flow and Texture | AAAI 2018 |                              -                               | [![GitHub](https://img.shields.io/github/stars/mil-tokyo/FTGAN)](https://github.com/mil-tokyo/FTGAN) |
+|    `FW-GAN`   | [![arXiv](https://img.shields.io/badge/arXiv-1908.02231-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/1908.02231)<br>FW-GAN: Flow-navigated Warping GAN for Video Virtual Try-on | ICCV 2019 |                              -                               |                              -                               |
 
 ### Progressive GANs
 > Models that generate content progressively, starting from low resolution and gradually increasing detail.
 
 |     Model     | Paper                                                        |   Venue    |                           Website                            |                            GitHub                            |
 | :-----------: | :----------------------------------------------------------- | :--------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| `Progressive` | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>Progressive Growing of GANs for Improved Quality, Stability, and Variation | Coming Soon |                              -                               |                              -                               |
-|    `SWGAN`    | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>Sliced Wasserstein Generative Models | Coming Soon |                              -                               |                              -                               |
-| `Patch VAE-GAN` | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>Patch-based Video Autoencoder with Adversarial Training | Coming Soon |                              -                               |                              -                               |
+| `PGGAN` | [![arXiv](https://img.shields.io/badge/arXiv-1710.10196-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/1710.10196)<br>Progressive Growing of GANs for Improved Quality, Stability, and Variation | ICLR 2018 |                              -                               | [![GitHub](https://img.shields.io/github/stars/tkarras/progressive_growing_of_gans)](https://github.com/tkarras/progressive_growing_of_gans) |
+|    `SWGAN`    | [![arXiv](https://img.shields.io/badge/arXiv-1706.02631-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/1706.02631)<br>Sliced Wasserstein Generative Models | ICLR 2018 |                              -                               | [![GitHub](https://img.shields.io/github/stars/skolouri/swae)](https://github.com/skolouri/swae) |
+|      `-`      | [![arXiv](https://img.shields.io/badge/arXiv-1810.02419-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/1810.02419)<br>Towards High Resolution Video Generation with Progressive Growing of Sliced Wasserstein GANs | ICCV 2019 |                              -                               | [![GitHub](https://img.shields.io/github/stars/musikisomorphie/swd)](https://github.com/musikisomorphie/swd) |
+| `Patch VAE-GAN` | [![arXiv](https://img.shields.io/badge/arXiv-2006.12226-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2006.12226)<br>Hierarchical Patch VAE-GAN: Generating Diverse Videos from a Single Sample | NIPS 2020 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://shirgur.github.io/hp-vae-gan/) | [![GitHub](https://img.shields.io/github/stars/shirgur/hp-vae-gan)](https://github.com/shirgur/hp-vae-gan) |
 
 ### StyleGAN-based Generation
 > Models leveraging StyleGAN's progressive architecture and style control for high-quality video generation.
 
 |     Model     | Paper                                                        |   Venue    |                           Website                            |                            GitHub                            |
 | :-----------: | :----------------------------------------------------------- | :--------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| `StyleVideoGAN` | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>StyleVideoGAN: A Temporal Generative Model using a Pretrained StyleGAN | Coming Soon |                              -                               |                              -                               |
-| `StyleGAN-V`  | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>StyleGAN-V: A Continuous Video Generator with the Price, Image Quality and Perks of StyleGAN2 | Coming Soon |                              -                               |                              -                               |
-| `StyleFaceV`  | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>StyleFaceV: Face Video Generation via Decomposing and Recomposing Pretrained StyleGAN2 | Coming Soon |                              -                               |                              -                               |
-| `StyleHEAT`   | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>StyleHEAT: One-Shot High-Resolution Editable Talking Face Generation via Pre-trained StyleGAN | Coming Soon |                              -                               |                              -                               |
+| `StyleVideoGAN` | [![arXiv](https://img.shields.io/badge/arXiv-2107.07224-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2107.07224)<br>StyleVideoGAN: A Temporal Generative Model using a Pretrained StyleGAN | BMVC 2021 |                              -                               |                              -                               |
+| `StyleGAN-V`  | [![arXiv](https://img.shields.io/badge/arXiv-2112.14683-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2112.14683)<br>StyleGAN-V: A Continuous Video Generator with the Price, Image Quality and Perks of StyleGAN2 | CVPR 2021 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](http://skor.sh/stylegan-v.html) | [![GitHub](https://img.shields.io/github/stars/universome/stylegan-v)](https://github.com/universome/stylegan-v) |
+| `StyleHEAT`   | [![arXiv](https://img.shields.io/badge/arXiv-2203.04036-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2203.04036)<br>StyleHEAT: One-Shot High-Resolution Editable Talking Face Generation via Pre-trained StyleGAN | ECCV 2022 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://feiiyin.github.io/StyleHEAT/) | [![GitHub](https://img.shields.io/github/stars/OpenTalker/StyleHEAT)](https://github.com/OpenTalker/StyleHEAT) |
+| `StyleFaceV`  | [![arXiv](https://img.shields.io/badge/arXiv-2208.07862-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2208.07862)<br>StyleFaceV: Face Video Generation via Decomposing and Recomposing Pretrained StyleGAN3 | arXiv 2022 |                              -                               |                              -                               |
+|   `StyleSV`   | [![arXiv](https://img.shields.io/badge/arXiv-2212.07413-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2212.07413)<br>Towards Smooth Video Composition | ICLR 2023 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://genforce.github.io/StyleSV) | [![GitHub](https://img.shields.io/github/stars/genforce/StyleSV)](https://github.com/genforce/StyleSV) |
 
 ---
 
@@ -301,19 +343,49 @@ We conduct an **in-depth analysis** of the foundational principles, key advancem
 
 > Comprehensive evaluation frameworks for assessing video generation quality, temporal consistency, and semantic alignment.
 
-### Quality & Fidelity Benchmarks
-|   Benchmark   | Paper                                                        |   Venue    |                           Website                            |                            GitHub                            |
-| :-----------: | :----------------------------------------------------------- | :--------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-|   `VBench`    | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>VBench: Comprehensive Benchmark Suite for Video Generative Models | Coming Soon |                              -                               |                              -                               |
-| `T2V-CompBench` | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>T2V-CompBench: A Comprehensive Benchmark for Compositional Text-to-video Generation | Coming Soon |                              -                               |                              -                               |
-| `VBench-2.0`  | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>VBench-2.0: Evaluating Video Generation with Human-Centric Metrics | Coming Soon |                              -                               |                              -                               |
+### Foundational Quality: Fidelity and Prompt Alignment
+> Benchmarks focusing on core video generation capabilities: visual quality, temporal consistency, and prompt adherence.
 
-### Specialized Evaluation
 |   Benchmark   | Paper                                                        |   Venue    |                           Website                            |                            GitHub                            |
 | :-----------: | :----------------------------------------------------------- | :--------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| `MovieBench`  | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>MovieBench: Long Video Generation Benchmark | Coming Soon |                              -                               |                              -                               |
-| `ChronoMagic-Bench` | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>ChronoMagic-Bench: A Benchmark for Metamorphic Evaluation of Text-to-Time-lapse Video Generation | Coming Soon |                              -                               |                              -                               |
-| `T2VSafetyBench` | [![arXiv](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)<br>T2VSafetyBench: Evaluating the Safety of Text-to-Video Generation | Coming Soon |                              -                               |                              -                               |
+|   `VBench`    | [![arXiv](https://img.shields.io/badge/arXiv-2311.17982-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2311.17982)<br>VBench: Comprehensive Benchmark Suite for Video Generative Models | CVPR 2024 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://vchitect.github.io/VBench-project/) | [![GitHub](https://img.shields.io/github/stars/Vchitect/VBench)](https://github.com/Vchitect/VBench) |
+| `T2V-CompBench` | [![arXiv](https://img.shields.io/badge/arXiv-2407.14505-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2407.14505)<br>T2V-CompBench: A Comprehensive Benchmark for Compositional Text-to-video Generation | CVPR 2025 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://t2v-compbench.github.io/) | [![GitHub](https://img.shields.io/github/stars/KaiyueSun98/T2V-CompBench)](https://github.com/KaiyueSun98/T2V-CompBench) |
+
+### Real-World Consistency: Physics, Commonsense, and Logic
+> Benchmarks evaluating whether generated videos conform to real-world physical laws, commonsense reasoning, and logical consistency.
+
+|   Benchmark   | Paper                                                        |   Venue    |                           Website                            |                            GitHub                            |
+| :-----------: | :----------------------------------------------------------- | :--------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| `VBench-2.0`  | [![arXiv](https://img.shields.io/badge/arXiv-2503.21755-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2503.21755)<br>VBench-2.0: Advancing Video Generation Benchmark Suite for Intrinsic Faithfulness | arXiv 2025 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://vchitect.github.io/VBench-project/) | [![GitHub](https://img.shields.io/github/stars/Vchitect/VBench)](https://github.com/Vchitect/VBench) |
+| `VideoGen-Eval` | [![arXiv](https://img.shields.io/badge/arXiv-2503.23452-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2503.23452)<br>VideoGen-Eval: Agent-based System for Video Generation Evaluation | arXiv 2025 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://ailab-cvc.github.io/VideoGen-Eval/) | [![GitHub](https://img.shields.io/github/stars/AILab-CVC/VideoGen-Eval)](https://github.com/AILab-CVC/VideoGen-Eval) |
+| `Physics-IQ`  | [![arXiv](https://img.shields.io/badge/arXiv-2501.09038-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2501.09038)<br>Do Generative Video Models Understand Physical Principles? | arXiv 2025 |                              -                               |                              -                               |
+| `VideoPhy-2`  | [![arXiv](https://img.shields.io/badge/arXiv-2503.06800-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2503.06800)<br>VideoPhy-2: A Challenging Action-Centric Physical Commonsense Evaluation in Video Generation | ICLR 2026 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://videophy2.github.io/) | [![GitHub](https://img.shields.io/github/stars/Hritikbansal/videophy)](https://github.com/Hritikbansal/videophy) |
+
+### Safety and Responsible AI
+> Benchmarks evaluating the safety of generated content, including harmful content detection, bias, and ethical compliance.
+
+|   Benchmark   | Paper                                                        |   Venue    |                           Website                            |                            GitHub                            |
+| :-----------: | :----------------------------------------------------------- | :--------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| `T2VSafetyBench` | [![arXiv](https://img.shields.io/badge/arXiv-2407.05965-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2407.05965)<br>T2VSafetyBench: Evaluating the Safety of Text-to-Video Generative Models | NeurIPS 2024 |                              -                               | [![GitHub](https://img.shields.io/github/stars/yibo-miao/T2VSafetyBench)](https://github.com/yibo-miao/T2VSafetyBench) |
+| `VBench++`    | [![arXiv](https://img.shields.io/badge/arXiv-2411.13503-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2411.13503)<br>VBench++: Comprehensive and Versatile Benchmark Suite for Video Generative Models | arXiv 2024 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://vchitect.github.io/VBench-project/) | [![GitHub](https://img.shields.io/github/stars/Vchitect/VBench)](https://github.com/Vchitect/VBench) |
+
+### Specific Capabilities: Motion, Temporality, and Narrative
+> Benchmarks focusing on specialized video aspects such as motion dynamics, long-range temporal reasoning, and storytelling.
+
+|   Benchmark   | Paper                                                        |   Venue    |                           Website                            |                            GitHub                            |
+| :-----------: | :----------------------------------------------------------- | :--------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+|   `VMBench`   | [![arXiv](https://img.shields.io/badge/arXiv-2503.10076-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2503.10076)<br>VMBench: A Benchmark for Perception-Aligned Video Motion Generation | ICCV 2025 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://amap-ml.github.io/VMBench-Website/) | [![GitHub](https://img.shields.io/github/stars/GD-AIGC/VMBench)](https://github.com/GD-AIGC/VMBench) |
+| `ChronoMagic-Bench` | [![arXiv](https://img.shields.io/badge/arXiv-2406.18522-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2406.18522)<br>ChronoMagic-Bench: A Benchmark for Metamorphic Evaluation of Text-to-Time-lapse Video Generation | NeurIPS 2024 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://pku-yuangroup.github.io/ChronoMagic-Bench/) | [![GitHub](https://img.shields.io/github/stars/PKU-YuanGroup/ChronoMagic-Bench)](https://github.com/PKU-YuanGroup/ChronoMagic-Bench) |
+| `MovieBench`  | [![arXiv](https://img.shields.io/badge/arXiv-2411.15262-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2411.15262)<br>MovieBench: A Hierarchical Movie Level Dataset for Long Video Generation | CVPR 2025 | [![Website](https://img.shields.io/badge/Link-yellow?style=flat-square&logo=gitbook)](https://weijiawu.github.io/MovieBench/) | [![GitHub](https://img.shields.io/github/stars/showlab/MovieBench)](https://github.com/showlab/MovieBench) |
+
+### Methodological Innovations for Scalable Evaluation
+> Innovations in the evaluation process itself, including human preference ranking and automated LLM-based assessment.
+
+|   Benchmark   | Paper                                                        |   Venue    |                           Website                            |                            GitHub                            |
+| :-----------: | :----------------------------------------------------------- | :--------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| `K-Sort Arena` | [![arXiv](https://img.shields.io/badge/arXiv-2408.14468-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2408.14468)<br>K-Sort Arena: Efficient and Reliable Benchmarking for Generative Models via K-wise Human Preferences | CVPR 2025 |                              -                               |                              -                               |
+| `AIGV-Assessor` | [![arXiv](https://img.shields.io/badge/arXiv-2411.17221-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2411.17221)<br>AIGV-Assessor: Benchmarking and Evaluating the Perceptual Quality of Text-to-Video Generation with LMM | CVPR 2025 |                              -                               | [![GitHub](https://img.shields.io/github/stars/wangjiarui153/AIGV-Assessor)](https://github.com/wangjiarui153/AIGV-Assessor) |
+| `Video-Bench` | [![arXiv](https://img.shields.io/badge/arXiv-2311.16103-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2311.16103)<br>Video-Bench: A Comprehensive Benchmark and Toolkit for Evaluating Video-based Large Language Models | arXiv 2023 |                              -                               | [![GitHub](https://img.shields.io/github/stars/PKU-YuanGroup/Video-Bench)](https://github.com/PKU-YuanGroup/Video-Bench) |
 
 ---
 
@@ -432,9 +504,9 @@ If you find this survey useful for your research, please consider citing:
 
 ```bibtex
 @article{hu2025video,
-  title={Video Generation Foundation Model: A Survey},
-  author={Hu, Teng and Jiangning Zhang, Huang, Hongrui, Ran Yi, Zihan Su, Jieyu Weng, Zhucun Xue, Lizhuang Ma},
-  journal={Arxiv},
+  title={Evolution of Video Generative Foundations},
+  author={Hu, Teng and Zhang, Jiangning and Huang, Hongrui and Yi, Ran and Su, Zihan and Weng, Jieyu and Xue, Zhucun and Ma, Lizhuang and Yang, Ming-Hsuan and Tao, Dacheng},
+  journal={arXiv},
   year={2025}
 }
 ```
@@ -466,9 +538,9 @@ We thank the video generation research community for their groundbreaking work a
 ---
 
 <div align="center">
-  <img src="https://img.shields.io/github/stars/worldbench/survey?style=social" alt="GitHub stars">
-  <img src="https://img.shields.io/github/forks/worldbench/survey?style=social" alt="GitHub forks">
-  <img src="https://img.shields.io/github/watchers/worldbench/survey?style=social" alt="GitHub watchers">
+  <img src="https://img.shields.io/github/stars/sjtuplayer/Awesome-Video-Foundations?style=social" alt="GitHub stars">
+  <img src="https://img.shields.io/github/forks/sjtuplayer/Awesome-Video-Foundations?style=social" alt="GitHub forks">
+  <img src="https://img.shields.io/github/watchers/sjtuplayer/Awesome-Video-Foundations?style=social" alt="GitHub watchers">
 </div>
 
 <div align="center">
